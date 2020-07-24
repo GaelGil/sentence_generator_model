@@ -14,7 +14,7 @@ def create_sentence(tokens_dictionary:dict, starting_word='the', SENTENCE_LENGTH
     for i in range(SENTENCE_LENGTH):
         sentence_list.append(starting_word)
         starting_word = random.sample(tokens_dictionary[starting_word], 1)[0]
-        sentence = SPACE.join(sentence_list)
+    sentence = SPACE.join(sentence_list)
     return ("it worked")
 
 
