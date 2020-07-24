@@ -15,7 +15,7 @@ def create_sentence(tokens_dictionary:dict, starting_word='the', SENTENCE_LENGTH
         sentence_list.append(starting_word)
         starting_word = random.sample(tokens_dictionary[starting_word], 1)[0]
     sentence = SPACE.join(sentence_list)
-    return ("it worked")
+    return sentence
 
 
 def create_dict(tokens: list, tokens_index: list) -> dict:
@@ -43,6 +43,7 @@ def clean_data(data: str) -> list:
     get rid of certain punctuation and numbrers.
     It also returns 2 variables
     """
+    data = str(data)
     cleaned = re.sub(r'[\.!#$%*()@,:/;"{}+=-]', ' ', data)
     clean_nums = re.sub(r'[0-9]', ' ', cleaned)
     tokens = clean_nums.split()
@@ -52,14 +53,14 @@ def clean_data(data: str) -> list:
     return tokens, tokens_index
 
 
-def generate_sentence():
-    """
-    This function takes in no argument but it opens a text file and
-    puts it in varible data
-    """
-    with open('test_bible.txt', 'r') as file:
-        data = file.read().replace('\n', ' ')
-    return data
+# def generate_sentence():
+#     """
+#     This function takes in no argument but it opens a text file and
+#     puts it in varible data
+#     """
+#     with open('test_bible.txt', 'r') as file:
+#         data = file.read().replace('\n', ' ')
+#     return data
 
 
 def make_sentence(book:str)->str:
@@ -73,19 +74,19 @@ def make_sentence(book:str)->str:
     return dictionary
 
 my_string = '1:2 And the !# earth was without $ form,   and void; and *()@ darkness was upon, {  the } face of the deep. And the +  Spirit of God moved upon the face of the = waters. - 1:3 And God said, Let there be light: and there was light.  '
-make_sentence(my_string)
+print(make_sentence(my_string))
 
-def make_bible_sentence()-> str:
-    """
-    This function takes in no argument and is called once
-    and sets varianles to functions, those varibles are
-    turned into retrun values passed into the next function
-    """
-    the_book = generate_sentence()
-    tokens, tokens_index = clean_data(the_book)
-    token_dictionary = create_dict(tokens, tokens_index)
-    dictionary = create_sentence(token_dictionary)
-    return dictionary
+# def make_bible_sentence()-> str:
+#     """
+#     This function takes in no argument and is called once
+#     and sets varianles to functions, those varibles are
+#     turned into retrun values passed into the next function
+#     """
+#     the_book = generate_sentence()
+#     tokens, tokens_index = clean_data(the_book)
+#     token_dictionary = create_dict(tokens, tokens_index)
+#     dictionary = create_sentence(token_dictionary)
+#     return dictionary
 
-if __name__ == "__main__":
-    make_bible_sentence()
+# if __name__ == "__main__":
+    # make_bible_sentence()
