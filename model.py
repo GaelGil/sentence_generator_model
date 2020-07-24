@@ -2,7 +2,7 @@ import random
 import re
 
 
-def create_sentence(tokens_dictionary:dict, starting_word='the', SENTENCE_LENGTH = 10)->str:
+def create_sentence(tokens_dictionary:dict, starting_word='darkness', SENTENCE_LENGTH = 10)->str:
     """
     This function takes in a dictionary as its argument
     and populates the list sentence with 10 words that
@@ -10,7 +10,8 @@ def create_sentence(tokens_dictionary:dict, starting_word='the', SENTENCE_LENGTH
     """
     sentence_list = []
     SPACE = ' '
-    print()
+    # print(tokens_dictionary)
+    # print(tokens_dictionary[starting_word])
     for i in range(SENTENCE_LENGTH):
         sentence_list.append(starting_word)
         starting_word = random.sample(tokens_dictionary[starting_word], 1)[0]
@@ -44,6 +45,7 @@ def clean_data(data: str) -> list:
     It also returns 2 variables
     """
     data = str(data)
+    # print(data)
     cleaned = re.sub(r'[\.!#$%*()@,:/;"{}+=-]', ' ', data)
     clean_nums = re.sub(r'[0-9]', ' ', cleaned)
     tokens = clean_nums.split()

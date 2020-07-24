@@ -28,16 +28,16 @@ class Todo(Resource):
         abort_if_todo_doesnt_exist(todo_id)
         return TODOS[todo_id]
 
-    def delete(self, todo_id):
-        abort_if_todo_doesnt_exist(todo_id)
-        del TODOS[todo_id]
-        return '', 204
+    # def delete(self, todo_id):
+    #     abort_if_todo_doesnt_exist(todo_id)
+    #     del TODOS[todo_id]
+    #     return '', 204
 
-    def put(self, todo_id):
-        args = parser.parse_args()
-        task = {'task': args['task']}
-        TODOS[todo_id] = task
-        return task, 201
+    # def put(self, todo_id):
+    #     args = parser.parse_args()
+    #     task = {'task': args['task']}
+    #     TODOS[todo_id] = task
+    #     return task, 201
 
 
 # TodoList
@@ -47,11 +47,14 @@ class TodoList(Resource):
         return TODOS
 
     def post(self):
-        args = parser.parse_args()
+        # args = parser.parse_args()
         todo_id = int(max(TODOS.keys()).lstrip('todo')) + 1
         todo_id = 'todo%i' % todo_id
-        TODOS[todo_id] = {'task': args['task']}
-        return make_sentence(todo_id), 201
+        # print("++++++++")
+        # print(self.get())
+        print(todo_id["tasks"] + " FSFSDFSFSDFSDFSDFS")
+        print(todo_id["tasks"])
+        return make_sentence(todo_id["tasks"]), 201
 
 ##
 ## Actually setup the Api resource routing here
