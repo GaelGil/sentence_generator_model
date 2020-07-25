@@ -8,15 +8,22 @@ def create_sentence(tokens_dictionary: dict, starting_word="the", sentence_lengt
     from a distribution. The `tokens_dictionary` argument is a dictionary that maps
     words to lists of words that follow them, effectively creating a sampling distribution.
     """
+    print(tokens_dictionary)
     sentence_list = []
 
     if starting_word not in tokens_dictionary.keys():
         tokens_dictionary[starting_word] = [list(tokens_dictionary.keys())[0]]
 
     # Sample words from the distribution using a Markov decision process.
-    for _ in range(sentence_length):
-        sentence_list.append(starting_word)
-        starting_word = random.sample(tokens_dictionary[starting_word], 1)[0]
+    try:
+        for _ in range(sentence_length):
+            sentence_list.append(starting_word)
+            print(sentence_list)
+            starting_word = random.sample(tokens_dictionary[starting_word], 1)[0]
+    except ValueError: # happens when we access the last word from data, if it's unique
+        sentence_list.append("the")
+        starting_word = "the"
+
     sentence = " ".join(sentence_list)
 
     return sentence
