@@ -10,6 +10,9 @@ def create_sentence(tokens_dictionary: dict, starting_word="the", sentence_lengt
     """
     sentence_list = []
 
+    if starting_word not in tokens_dictionary.keys():
+        tokens_dictionary[starting_word] = [list(tokens_dictionary.keys())[0]]
+
     # Sample words from the distribution using a Markov decision process.
     for _ in range(sentence_length):
         sentence_list.append(starting_word)
