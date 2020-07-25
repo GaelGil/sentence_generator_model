@@ -2,24 +2,26 @@ import random
 import re
 
 
-def create_sentence(tokens_dictionary:dict, starting_word='the', SENTENCE_LENGTH = 10)->str:
+def create_sentence(tokens_dictionary: dict, starting_word="the", sentence_length = 10) -> str:
     """
-    This function takes in a dictionary as its argument
-    and populates the list sentence with 10 words that
-    come after the keyword and the word after that.
+    This function function uses a Markov decision process to sample words
+    from a distribution. The `tokens_dictionary` argument is a dictionary that maps
+    words to lists of words that follow them, effectively creating a sampling distribution.
     """
     sentence_list = []
-    SPACE = ' '
-    for i in range(SENTENCE_LENGTH):
+
+    # Sample words from the distribution using a Markov decision process.
+    for _ in range(sentence_length):
         sentence_list.append(starting_word)
         starting_word = random.sample(tokens_dictionary[starting_word], 1)[0]
-    sentence = SPACE.join(sentence_list)
+    sentence = " ".join(sentence_list)
+
     return sentence
 
 
 def create_dict(tokens: list, tokens_index: list) -> dict:
     """
-    This function 
+    This function ...
 
     Parameters
     ----------
@@ -31,7 +33,7 @@ def create_dict(tokens: list, tokens_index: list) -> dict:
         A dictionary with words as keys and a list of words that come 
         after it as value.
     """
-    # initializing dictionary
+    # Initializing dictionary
     words_with_nearby = {}
 
     # set tokens as keys in dictionary
@@ -45,6 +47,7 @@ def create_dict(tokens: list, tokens_index: list) -> dict:
         words_with_nearby[current_word].append(next_word)
 
     return words_with_nearby
+
 
 def clean_data(text: str) -> list:
     """
@@ -80,17 +83,7 @@ def clean_data(text: str) -> list:
     return tokens, tokens_index
 
 
-# def generate_sentence():
-#     """
-#     This function takes in no argument but it opens a text file and
-#     puts it in varible data
-#     """
-#     with open('test_bible.txt', 'r') as file:
-#         data = file.read().replace('\n', ' ')
-#     return data
-
-
-def make_sentence(book:str)->str:
+def make_sentence(book: str) -> str:
     """
     This function takes in a book or text from
     the user and calls all the functions
@@ -98,22 +91,5 @@ def make_sentence(book:str)->str:
     tokens, tokens_index = clean_data(book)
     token_dictionary = create_dict(tokens, tokens_index)
     dictionary = create_sentence(token_dictionary)
+
     return dictionary
-
-my_string = '1:2 And the !# earth was without $ form,   and void; and *()@ darkness was upon, {  the } face of the deep. And the +  Spirit of God moved upon the face of the = waters. - 1:3 And God said, Let there be light: and there was light.  '
-print(make_sentence(my_string))
-
-# def make_bible_sentence()-> str:
-#     """
-#     This function takes in no argument and is called once
-#     and sets varianles to functions, those varibles are
-#     turned into retrun values passed into the next function
-#     """
-#     the_book = generate_sentence()
-#     tokens, tokens_index = clean_data(the_book)
-#     token_dictionary = create_dict(tokens, tokens_index)
-#     dictionary = create_sentence(token_dictionary)
-#     return dictionary
-
-# if __name__ == "__main__":
-    # make_bible_sentence()
