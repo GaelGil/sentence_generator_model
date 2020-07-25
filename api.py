@@ -47,14 +47,12 @@ class TodoList(Resource):
         return TODOS
 
     def post(self):
-        # args = parser.parse_args()
+        args = parser.parse_args()
         todo_id = int(max(TODOS.keys()).lstrip('todo')) + 1
         todo_id = 'todo%i' % todo_id
-        # print("++++++++")
-        # print(self.get())
-        print(todo_id["tasks"] + " FSFSDFSFSDFSDFSDFS")
-        print(todo_id["tasks"])
-        return make_sentence(todo_id["tasks"]), 201
+        TODOS[todo_id] = {'task': args['task']}
+        # print(TODOS[todo_id]["task"])
+        return make_sentence(TODOS[todo_id]["task"]), 201
 
 ##
 ## Actually setup the Api resource routing here
@@ -64,4 +62,4 @@ api.add_resource(Todo, '/todos/<todo_id>')
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=4000, debug=True)
+    app.run(host='0.0.0.0', port=4000, debug=True) 
