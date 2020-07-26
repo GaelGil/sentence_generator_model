@@ -44,11 +44,11 @@ def create_dict(tokens: list, tokens_index: list) -> dict:
     # Initializing dictionary
     words_with_nearby = {}
 
-    # set tokens as keys in dictionary
+    # Set tokens as keys in dictionary
     for token in tokens_index:
         words_with_nearby[token] = []
 
-    # get words that come after the token index
+    # Get words that come after the token index
     for i in range(len(tokens) - 1):
         current_word = tokens[i]
         next_word = tokens[i + 1]
