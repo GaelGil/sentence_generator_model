@@ -64,6 +64,7 @@ def clean_data(text: str) -> list:
     lowercase. Laslty this function returns two lists of words one containing 
     duplicates and the other with not containing duplicates.
     
+    
     Parameters
     ----------
     text: str
