@@ -1,8 +1,7 @@
 # sentence_generator_model
 
 This project here is an extension to my `sentence-generator` project
-which can be found here <a href=""></a>. I used to have my model on the same place as my website. In this project I sepereate my model from my website. In this project I have mi model and a api which I host on a seperate server from my website. It takes requests and sends back a generated [sentence](https://sentence-gen.herokuapp.com/).
-
+which can be found here [sentence](https://sentence-gen.herokuapp.com/).. I used to have my model on the same place as my website. In this project I sepereate my model from my website. In this project I have mi model and a api which I host on a seperate server from my website. It takes requests and sends back a generated sentence.
 # Getting Started 
 
 To begin you can clone the repo. Before you can start this project up you should create a virtual enviorment to install all the packages. You can create a virtual envoirment witht this command. 
