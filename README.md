@@ -1,7 +1,7 @@
 # sentence_generator_model
 
 This project here is an extension to my `sentence-generator` project
-which can be found here <a href=""></a>. I use to serve my model on the same place as my website. In this project I sepereate my model from my website. In this project I have mi model and a api which I host on a seperate server from my website. It takes requests and sends back a generated [sentence](www.google.com).
+which can be found here <a href=""></a>. I used to have my model on the same place as my website. In this project I sepereate my model from my website. In this project I have mi model and a api which I host on a seperate server from my website. It takes requests and sends back a generated [sentence](https://sentence-gen.herokuapp.com/).
 
 # Getting Started 
 
