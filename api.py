@@ -19,11 +19,8 @@ class callSentenceGenerator(Resource):
         args = parser.parse_args()
         return make_sentence(args['sentence'])
 
-##
-## Actually setup the Api resource routing here
-##
+
 api.add_resource(callSentenceGenerator, '/sentence')
-# api.add_resource(Todo, '/todos/<todo_id>')
 
 
 if __name__ == '__main__':
