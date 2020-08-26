@@ -2,24 +2,14 @@ import pytest
 from model import create_sentence, create_dict, clean_data, make_sentence
 
 
-# Test create_sentence
-
-
-# Test create_dict
-
-
-# Test clean_data
-messy_data = """
-this . test ;;  has a lot %%% OF junkkk that shou l d be removed.
-"""
+messy_data = "this . test ;;  has a lot %%% OF junkkk that shou l d be removed."
 
 assert clean_data(messy_data) == "this test has a lot of junkkk that shou be removed"
 #TODO:this function returns two list. First is a set then a list of all words
 
-# Test make_sentence
 
 
-
+# Test clean_data
 @pytest.mark.parametrize('input, output', [
     ('God said! ', ['god', 'said']),
     ('1:2 And the earth was', ['and', 'the', 'earth', 'was']),
@@ -33,6 +23,7 @@ def test_clean_data(input, output):
     assert clean_data(input)[0] == output
 
 
+# Test create_dict
 def test_create_dict():
     """
     The function create_dict recives two values and creates a dictionary and returns that dictionary.
@@ -49,6 +40,7 @@ def test_create_dict():
     assert create_dict(input_1, input_2) ==  output
 
 
+# Test create_sentence
 def test_create_sentence():
     """
     The function create_sentence returns a stirng with 10 random sampled words as our sentence, because
